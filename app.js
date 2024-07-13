@@ -20,8 +20,9 @@ require('./configs/passport.config')(passport);
 
 const app = express();
 
+app.set('trust proxy', 3)
 app.use(cors({
-  origin: ["http://localhost:3000", "https://project-tracker-psi.vercel.app/"],
+  origin: ["https://project-tracker-psi.vercel.app", "http://localhost:3000"],
   credentials: true
 }));
 
