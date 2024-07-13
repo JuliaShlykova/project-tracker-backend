@@ -14,7 +14,7 @@ exports.getNotDoneTasks = async (req, res, next) => {
 
 exports.getAllTasks = async (req, res, next) => {
   try {
-    const tasks = await Task.find({assignee: req.user._id}).sort('dueDate').populate('project', 'name');
+    const tasks = await Task.find({assignee: req.user._id}).sort('-dueDate').populate('project', 'name');
     res.status(200).json(tasks);
   } catch(err) {
     next(err);
@@ -96,7 +96,7 @@ async (req, res, next) => {
     if (project.author.equals(req.user._id)||project.participants.some(user=>user.equals(req.user._id))) {
       const { name, description, dueDate, done } = req.body;
       const completedDate = done?((oldTask.done===done)?oldTask.completedDate:(new Date().toISOString())):undefined;
-      const task = await Task.findByIdAndUpdate(taskId, { name, description, dueDate, done, completedDate }, {new: true} ).populate('project', 'name');
+      const task = await Task.findByIdAndUpdate(taskId, { name, description, dueDate, done, completedDate }, {new: true} ).populate('project', 'name').populate('assignee', 'nickname');
       res.status(200).json(task);
     } else {
       debug.error('no rights to modify');

@@ -29,7 +29,6 @@ if (process.env.NODE_ENV!=='test') {
   app.use(morgan('tiny'));
   app.use(rateLimit({
     widnowMs: 1*60*1000,
-    // max: 40
     limit: 40
   }));
 };
