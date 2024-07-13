@@ -34,14 +34,14 @@ const refreshTokenOptsHTTPOnly = {
   httpOnly: true, //JS has no access to the cookie on the client
   secure: true, // https: scheme only except for localhost
   maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day until cookie expires
-  sameSite: 'Strict', // the browser sends the cookie only for same-site requests, that is, requests originating from the same site that set the cookie.
+  sameSite: 'None',
   path: '/auth' // must exist in the request url for the browser to send cookie
 };
 
 const refreshTokenOptsNotHTTP = {
   secure: true, // https: scheme only except for localhost
   maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day until cookie expires
-  sameSite: 'Strict', // the browser sends the cookie only for same-site requests, that is, requests originating from the same site that set the cookie.
+  sameSite: 'None',
   path: '/auth' // must exist in the request url for the browser to send cookie
 };
 
