@@ -21,7 +21,7 @@ require('./configs/passport.config')(passport);
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://project-tracker-psi.vercel.app/"],
   credentials: true
 }));
 
